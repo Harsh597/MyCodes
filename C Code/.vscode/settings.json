@@ -1,0 +1,18 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "typeinfo": "c",
+        "cmath": "c",
+        "*.tcc": "c",
+        "stdio.h": "c",
+        "conio.h": "c",
+        "stack": "c",
+        "queue": "c",
+        "cstdlib": "c",
+        "stdlib.h": "c",
+        "memory": "c",
+        "cctype": "c",
+        "cstdio": "c"
+    },
+    "terminal.explorerKind": "external"
+}
