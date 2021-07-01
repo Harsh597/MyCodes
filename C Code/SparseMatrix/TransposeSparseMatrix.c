@@ -27,11 +27,11 @@ void transposeMatrix(int *arr, int row, int col, int val)
     for (int i = 0; i < row; i++)
         for (int j = 0; j < col; j++)
         {
-            if (*(arr + i * 6 + j) != 0)
+            if (*(arr + i * col + j) != 0)
             {
                 EfficientMatrix[val][0] = i + 1;
                 EfficientMatrix[val][1] = j + 1;
-                EfficientMatrix[val][2] = *(arr + i * 6 + j);
+                EfficientMatrix[val][2] = *(arr + i * col + j);
                 val++;
             }
         }
