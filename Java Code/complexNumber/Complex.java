@@ -58,21 +58,21 @@ public class Complex {
 			System.out.println("\nNot Possible");
 		else
 		{
-			double modC=(Math.pow(2,c.get_real())+Math.pow( 2,c.get_imag()));
+			double modC=(Math.pow(2,Math.abs(c.get_real()))+Math.pow( 2,Math.abs(c.get_imag())));
 			_real= c.get_real()/modC;
 			_imag=-1*(c.get_imag()/modC);
 		}
 	}
 	public String  toString() {
 		if (get_imag() >= 0)
-			return ("Complex Number : " + String.format("%.2f",get_real()) + " + " + String.format("%.2f",get_imag()) + "i");
+			return ("Complex Number : " + String.format("%.5f",get_real()) + " + " + String.format("%.5f",get_imag()) + "i");
 		else
-			return ("Complex Number : " + String.format("%.2f",get_real()) + " - " + String.format("%.2f",-1*get_imag()) + "i");
+			return ("Complex Number : " + String.format("%.5f",get_real()) + " - " + String.format("%.5f",-1*get_imag()) + "i");
 	}
 
 	public Complex() {
-		_real = 0.0f;
-		_imag = 0.0f;
+		_real = 0.0;
+		_imag = 0.0;
 	}
 
 	public Complex(double x, double y) {
