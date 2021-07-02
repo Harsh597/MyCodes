@@ -53,8 +53,15 @@ public class MainComplex {
 
 				break;
 			case '4':
-
+				System.out.println("Enter  Complex Number");
+				c1.set_complex();
+				System.out.println(c1);
+				cmplx.inverse_complex(c1);
+				System.out.println("After Inverse");
+				System.out.println(cmplx);
 				break;
+
+				
 			case '5':
 				System.out.println("Enter  Complex Number");
 				c1.set_complex();
