@@ -56,7 +56,8 @@ public class Determinant {
 		mat2.get_Matrix();
 		System.out.println("After Multiplication:");
 		Matrix.mul(mat1, mat2);
-		System.out.println("Determinant : " + det(mat1.mat, 0, 0, mat1.getRows(), mat1.getCols()));
+		//double [][]matrix=mat1.getMat();
+		System.out.println("Determinant : " + det(mat1.getMat(), 0, 0, mat1.getRows(), mat1.getCols()));
 
 	}
 
