@@ -1,5 +1,6 @@
 package shopper;
 
+<<<<<<< HEAD
 //Ans-3 Bookshop class derived from the Shop class
 public class BookShop extends Shop {
 	private String[] Author_List; // adding extra data member Author_list specially for the BookShop Class
@@ -12,11 +13,21 @@ public class BookShop extends Shop {
 		for (i = 0; i < Author_List.length; i++) {
 			if (getItem_list()[i].equalsIgnoreCase(Book) && Author_List[i].equalsIgnoreCase(Author)) {
 
+=======
+public class BookShop extends Shop {
+	private String[] Author_List; // Author list
+
+	private void checkItem(String item) {
+		boolean fnd = false;
+		for (int i = 0; i < Author_List.length; i++) {
+			if (Author_List[i].equals(item)) {
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 				fnd = true;
 				break;
 			}
 		}
 		if (!fnd)
+<<<<<<< HEAD
 			throw new NoItemException(Book + " by " + Author);
 	}
 
@@ -94,5 +105,37 @@ public class BookShop extends Shop {
 		System.arraycopy(Author, 0, Author_List, 0, Author_List.length);
 
 	}
+=======
+			throw new NoItemException(item);
+
+	}
+
+	public void listItem() {
+		System.out.println("List of Available Items and their Prices");
+		System.out.printf("%5s %-30s %-40s %8s %5s\n", "SNo.", "Book", "Author", "Price", "Qty.");
+		for (int i = 0; i < getItem_list().length; i++) {
+			checkItem(Author_List[i]);
+			System.out.printf("%4d. %-30s %-40s %8.2f %3d\n", i + 1, getItem_list()[i], Author_List[i],
+					getItem_costs()[i], getItem_stocks()[i]);
+
+		}
+	}
+
+	public BookShop() {
+		setItem_list(new String[] { "Java", "C++", "Data Structure", "Operating System", "Networking" });
+		setItem_costs(new double[] { 300.0, 360.0, 240.0, 400.0, 200.0 });
+		setItem_stocks(new int[] { 25, 10, 20, 10, 20 });
+		Author_List = new String[] { "Herbert Schildt", "Yashwant Kanetkar","Narshimha Karamuchi", "Avi Silberschatz and Peter Galvin",
+				"James F Kurose" };
+	}
+
+	public BookShop(String[] Book_list, String[] Author, double[] prices, int[] stocks) {
+		super(Book_list,prices,stocks);
+		System.arraycopy(Author,0,Author_List,0,Author_List.length);
+		
+	}
+	
+
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 
 }

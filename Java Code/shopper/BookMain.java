@@ -1,5 +1,6 @@
 package shopper;
 
+<<<<<<< HEAD
 import java.util.Scanner;
 
 public class BookMain {
@@ -33,6 +34,22 @@ public class BookMain {
 			Bshop.addItem(book, author, qt);
 			Bshop.listItem();
 		} catch (ArithmeticException ae) {
+=======
+public class BookMain {
+
+	public static void main(String[] args) {
+		BookShop Bshop=new BookShop();
+		try {
+			Bshop.listItem();
+			Bshop.buyItem("Java", 2);
+			Bshop.listItem();
+			Bshop.buyItem("Networking", 1);
+			Bshop.buyItem("C++", 12);
+			Bshop.addItem("Data Structure", 10);
+			Bshop.listItem();
+		}
+		catch (ArithmeticException ae) {
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 			System.out.println(ae);
 		}
 

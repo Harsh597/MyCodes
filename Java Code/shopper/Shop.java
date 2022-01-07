@@ -34,7 +34,11 @@ public class Shop {
 	}
 
 	public Shop(String[] itemlist, double[] prices, int[] stocks) throws NoProperFormatException {
+<<<<<<< HEAD
 		// Check if lists match, otherwise throw exception
+=======
+		// Check if lists match; otherwise throw exception
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 		if ((itemlist.length != prices.length) || (itemlist.length != stocks.length)
 				|| (prices.length != stocks.length))
 			throw new NoProperFormatException();
@@ -53,13 +57,20 @@ public class Shop {
 	public void listItem() {
 		System.out.println("List of Available Items and their Prices");
 		System.out.printf("%5s %-30s %8s %5s\n", "SNo.", "Item", "Price", "Qty.");
+<<<<<<< HEAD
 		for (int i = 0,j=0; i < item_list.length; i++) {
 			if (item_stocks[i] > 0) {
 				System.out.printf("%4d. %-30s %8.2f %3d\n", ++j , item_list[i], item_costs[i], item_stocks[i]);
+=======
+		for (int i = 0; i < item_list.length; i++) {
+			if (item_stocks[i] > 0) {
+				System.out.printf("%4d. %-30s %8.2f %3d\n", i + 1, item_list[i], item_costs[i], item_stocks[i]);
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	public double buyItem(String itm, int qty) {
 		checkItem(itm);
 		for (int i = 0; i < item_list.length; i++) {
@@ -70,11 +81,24 @@ public class Shop {
 				} else
 					throw new NoStockException(item_list[i], item_stocks[i]);
 		}
+=======
+	public double buyItem(String itm, int qty)  {
+			checkItem(itm);
+			for (int i = 0; i < item_list.length; i++) {
+				if (item_list[i].equals(itm))
+					if (item_stocks[i] >= qty) {
+						item_stocks[i] -= qty;
+						return (qty * item_costs[i]);
+					} else
+						throw new NoStockException(item_list[i], item_stocks[i]);
+			}
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 		return (0);
 	}
 
 	public double getPrice(String itm) {
 		double c = 0.0;
+<<<<<<< HEAD
 		checkItem(itm);
 		for (int i = 0; i < item_list.length; i++)
 			if (item_list[i].equalsIgnoreCase(itm))
@@ -86,6 +110,19 @@ public class Shop {
 		boolean fnd = false;
 		for (int i = 0; i < item_list.length; i++) {
 			if (item_list[i].equalsIgnoreCase(item)) {
+=======
+			checkItem(itm);
+			for (int i = 0; i < item_list.length; i++)
+				if (item_list[i].equals(itm))
+					c = item_costs[i];
+		return (c);
+	}
+
+	private void checkItem(String item)  {
+		boolean fnd = false;
+		for (int i = 0; i < item_list.length; i++) {
+			if (item_list[i].equals(item)) {
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 				fnd = true;
 				break;
 			}
@@ -96,6 +133,7 @@ public class Shop {
 	}
 
 	public void setPrice(String item, double price) {
+<<<<<<< HEAD
 		checkItem(item);
 		int item_i = search_item(item);
 		item_costs[item_i] = price;
@@ -113,11 +151,29 @@ public class Shop {
 	private int search_item( String item) {
 		for (int i = 0; i < getItem_list().length; i++) {
 			if (item_list[i].equalsIgnoreCase(item)) {
+=======
+			checkItem(item);
+			int item_i = search_item(item_list, item);
+			item_costs[item_i] = price;
+
+	}
+
+	public void addItem(String item, int qty) {
+			checkItem(item);
+			int item_i = search_item(item_list, item);
+			item_stocks[item_i] += qty;
+	}
+
+	private int search_item(String[] item_list, String item) {
+		for (int i = 0; i < item_list.length; i++) {
+			if (item_list[i].equals(item)) {
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 				return i;
 			}
 		}
 		return -1;
 	}
+<<<<<<< HEAD
 
 	class NoProperFormatException extends ArithmeticException {
 		private String explanation = "All the lists must be of the same size!";
@@ -162,5 +218,51 @@ public class Shop {
 			return ("NoItemException: " + explanation);
 		}
 	}
+=======
+	
+class NoProperFormatException extends ArithmeticException {
+	private String explanation = "All the lists must be of the same size!";
+
+	public String toString() {
+		return ("NoProperFormatException: " + explanation);
+	}
+}
+
+class NoStockException extends ArithmeticException {
+	private String explanation;
+
+	public NoStockException() {
+		explanation = new String("Insufficient Stocks!");
+	}
+
+	public NoStockException(int qty) {
+		explanation = new String("Only " + qty + " Quantities Available");
+	}
+
+	public NoStockException(String itm, int qty) {
+		explanation = new String(itm + "-- Only " + qty + " Quantities Available");
+	}
+
+	public String toString() {
+		return ("NoStockException: " + explanation);
+	}
+}
+
+class NoItemException extends ArithmeticException {
+	private String explanation;
+
+	public NoItemException() {
+		explanation = new String("Specified Item Not Found!");
+	}
+
+	public NoItemException(String it) {
+		explanation = new String(it + "-- Not in Items List");
+	}
+
+	public String toString() {
+		return ("NoItemException: " + explanation);
+	}
+}
+>>>>>>> cb0f8d61ae774798f89a9ed16a4e7256147a67e5
 
 }
