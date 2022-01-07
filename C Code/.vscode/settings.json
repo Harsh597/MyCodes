@@ -12,7 +12,8 @@
         "stdlib.h": "c",
         "memory": "c",
         "cctype": "c",
-        "cstdio": "c"
+        "cstdio": "c",
+        "algorithm": "c"
     },
     "terminal.explorerKind": "external"
 }

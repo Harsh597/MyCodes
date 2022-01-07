@@ -8,7 +8,7 @@
             "name": "(gdb) Attach",
             "type": "cppdbg",
             "request": "attach",
-            "program": "C:\\Users\\harsh\\OneDrive\\Documents\\C Code\\Test.exe",
+            "program": "C:\\Users\\harsh\\Desktop\\HarshG Codes\\C Code\\MCA PROGRAMS\\*.exe",
             "processId": "${command:pickProcess}",
             "MIMode": "gdb",
             "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe",
@@ -26,7 +26,8 @@
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "C:\\Users\\harsh\\OneDrive\\Documents\\C Code\\PuzzleGame\\SlideNum.exe",
+            "program": "C:\\Users\\harsh\\Desktop\\HarshG Codes\\C Code\\BFS.exe",
+            
             "args": [],
             
             "stopAtEntry": false,

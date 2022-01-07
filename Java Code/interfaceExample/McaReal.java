@@ -2,7 +2,11 @@ package interfaceExample;
 
 public class McaReal implements McaNumber {
 
-	float value;
+	private float value;
+
+	public float getValue() {
+		return value;
+	}
 
 	public McaReal() {
 		value = 123.4f;
@@ -16,23 +20,16 @@ public class McaReal implements McaNumber {
 		return (int) value;
 	}
 
-	int countDigit(int n) {
-		return (int) Math.floor(Math.log10(n) + 1);
-	}
-
 	int getFracPart() {
-		String n = String.valueOf(value);
-		int digit = 0;
-		int dot_pos = -1;
-		for (char ch : n.toCharArray()) {
-			if (ch == '.')
-				dot_pos++;
-			else
-				digit++;
+		String str_real = String.valueOf(value);
+		int dot_pos = 0;
+		for (char ch : str_real.toCharArray()) {
+			if (ch == '.') {
+				break;
+			}
+			dot_pos++;
 		}
-		int frac = Integer.parseInt(n.substring(dot_pos));
-
-//		return (int) (value*Math.pow(10, digit-dot_pos ))%(int) (Math.pow(10, (digit-dot_pos) ));
+		int frac = Integer.parseInt(str_real.substring(dot_pos + 1));
 		return frac;
 
 	}
@@ -40,7 +37,7 @@ public class McaReal implements McaNumber {
 	@Override
 	public String toString() {
 		String str;
-		str = "value = " + value;
+		str = "McaReal : " + String.format("%.4f", value);
 		return str;
 	}
 
@@ -86,7 +83,7 @@ public class McaReal implements McaNumber {
 	@Override
 	public McaNumber divideBy(Object num) {
 		McaReal real = (McaReal) num;
-		real.value /= this.value;
+		real.value = this.value/real.value;
 		return real;
 	}
 

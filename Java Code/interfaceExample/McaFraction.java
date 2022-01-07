@@ -1,9 +1,9 @@
 package interfaceExample;
 
-public class McaFraction implements McaNumber {
+public class McaFraction extends Exception implements McaNumber {
 
-	int numerator;
-	int denominator;
+	private int numerator;
+	private int denominator;
 
 	public McaFraction() {
 		numerator = 1;
@@ -12,6 +12,7 @@ public class McaFraction implements McaNumber {
 
 	public McaFraction(int numerator, int denominator) {
 		this.numerator = numerator;
+		numerator /= denominator;// if division by zero then exception generates here
 		this.denominator = denominator;
 	}
 
@@ -25,17 +26,18 @@ public class McaFraction implements McaNumber {
 
 	public String toString() {
 		String str;
-		str = "value = " + numerator + "/" + denominator;
+		str = "McaFraction : " + numerator + "/" + denominator;
 		return str;
 	}
 
 	public float toDecimal() {
-		return (float) (getNumerator() / getDenominator());
+		float result = ((float) getNumerator() / getDenominator());
+		result = Float.parseFloat(String.format("%.4f", result));
+		return result;
 	}
 
 	@Override
 	public boolean equalsTo(Object num) {
-		// TODO Auto-generated method stub
 		return this == num;
 	}
 
@@ -67,7 +69,7 @@ public class McaFraction implements McaNumber {
 		McaFraction frac = (McaFraction) num;
 		int Dr, Nr;
 		Dr = this.denominator * frac.denominator;
-		Nr = ((Dr / frac.denominator) * frac.numerator)- ((Dr / this.denominator) * this.numerator) ;
+		Nr = ((Dr / frac.denominator) * frac.numerator) - ((Dr / this.denominator) * this.numerator);
 		frac.numerator = Nr;
 		frac.denominator = Dr;
 		return frac;
@@ -75,7 +77,6 @@ public class McaFraction implements McaNumber {
 
 	@Override
 	public McaNumber multWith(Object num) {
-		System.out.println("After multiplication");
 		McaFraction frac = (McaFraction) num;
 		frac.denominator = this.denominator * frac.denominator;
 		frac.numerator = this.numerator * frac.numerator;
@@ -86,9 +87,12 @@ public class McaFraction implements McaNumber {
 	@Override
 	public McaNumber divideBy(Object num) {
 		McaFraction frac = (McaFraction) num;
-		frac.denominator = this.denominator * frac.numerator;
-		frac.numerator = this.numerator * frac.denominator;
+		int Nr, Dr;
 
+		Nr = this.numerator * frac.denominator;
+		Dr = this.denominator * frac.numerator;
+		frac.numerator = Nr;
+		frac.denominator = Dr;
 		return frac;
 	}
 
